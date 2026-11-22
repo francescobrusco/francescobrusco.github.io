@@ -132,3 +132,13 @@ header.page p{margin-top:16px;color:var(--ink-2);font-size:21px}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .cv li a{color:var(--link);text-decoration:underline;text-decoration-color:rgba(31,111,224,.35);text-underline-offset:4px}
 .cv li a:hover{color:var(--link-d)}
+/* attività: media allineati in basso */
+.cols>div{display:flex;flex-direction:column}
+.cols .media{margin-top:auto;padding-top:16px}
+.cols .media .video{margin-top:0}
+.ig{aspect-ratio:16/9;border-radius:10px;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-decoration:none;color:#c9d3e3;font:15px/1 var(--sans);letter-spacing:.01em;transition:background .2s}
+.ig img{width:150px;height:150px;border-radius:50%;display:block;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.ig:hover{background:var(--navy)}
+.ig:hover span{color:#fff}
+@media(max-width:900px){.cols .media{margin-top:0}}
+@media(max-width:520px){.ig img{width:112px;height:112px}.ig{gap:10px;font-size:14px}}
