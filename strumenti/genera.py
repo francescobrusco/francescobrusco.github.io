@@ -103,7 +103,7 @@ T = {
    att=[('Didattica', '<p>Insegna Musiche Popolari Contemporanee e Sound Design all’Università di Salerno e tiene laboratori e workshop su digital humanities, network analysis e mappatura delle scene musicali.</p>'),
         ('Giornalismo', '<p>Scrive di musica per <i>Il Manifesto</i> e <i>il Giornale della Musica</i>.</p><ul><li><a href="https://ilmanifesto.it/autori/francesco-brusco" target="_blank" rel="noopener">Articoli su il manifesto</a></li></ul>'),
         ('Musica', '<p>Come musicista ha all’attivo due album con i Là Nua.</p>')],
-   libri_title='Pubblicazioni', libri_lede='Monografie, tesi di dottorato e articoli. I titoli dei libri portano alla scheda su laFeltrinelli, quelli degli articoli alla versione online.',
+   libri_title='Pubblicazioni', libri_lede='Monografie, tesi di dottorato e articoli.',
    back='← Torna alla home', felt='Scheda su laFeltrinelli', alt_cover='Copertina di',
  ),
  'en': dict(
@@ -130,7 +130,7 @@ T = {
    att=[('Teaching', '<p>He teaches Contemporary Popular Music and Sound Design at the University of Salerno and leads workshops on digital humanities, network analysis and the mapping of music scenes.</p>'),
         ('Journalism', '<p>He writes about music for <i>Il Manifesto</i> and <i>il Giornale della Musica</i>.</p><ul><li><a href="https://ilmanifesto.it/autori/francesco-brusco" target="_blank" rel="noopener">Articles in il manifesto</a></li></ul>'),
         ('Music', '<p>As a musician he has released two albums with Là Nua.</p>')],
-   libri_title='Publications', libri_lede='Monographs, PhD thesis and articles. Book titles link to their page on laFeltrinelli, article titles to the online version.',
+   libri_title='Publications', libri_lede='Monographs, PhD thesis and articles.',
    back='← Back to home', felt='laFeltrinelli page', alt_cover='Cover of',
  ),
 }
