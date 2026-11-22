@@ -1,0 +1,116 @@
+:root{
+  --paper:#f2f5f9; --paper-2:#e5eaf2; --paper-3:#d8dfea; --surface:#fff;
+  --ink:#12213d; --ink-2:#3d4c66; --ink-3:#6b7891; --rule:#cfd7e3;
+  --accent:#a3132f; --accent-d:#8e1028; --accent-l:#f29aa8; --navy:#0e2a52;
+  --sans:"Instrument Sans",system-ui,sans-serif; --display:"Fraunces",Georgia,serif; --serif:"EB Garamond",Garamond,Georgia,serif;
+  --w:1160px; --soft:"opsz" 144,"SOFT" 30,"WONK" 0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--paper);color:var(--ink);font:19.5px/1.55 var(--serif);-webkit-font-smoothing:antialiased}
+a{color:var(--accent-d);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);font-variation-settings:var(--soft);font-weight:600;line-height:1.06;letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(32px,4.4vw,52px);margin-bottom:.5em}
+h3{font-size:24px;font-weight:600;margin-bottom:.3em}
+p{max-width:66ch}
+.note{font:14px/1.5 var(--sans);color:var(--ink-3)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+nav.top{position:sticky;top:0;z-index:100;background:rgba(242,245,249,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+nav.top .wrap{display:flex;align-items:center;gap:28px;height:58px}
+nav.top .brand{font:600 19px/1 var(--display);font-variation-settings:var(--soft);color:var(--ink);text-decoration:none;white-space:nowrap}
+nav.top ul{display:flex;gap:22px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none;min-width:0}
+nav.top ul a{font:500 14.5px/1 var(--sans);color:var(--ink-2);text-decoration:none;white-space:nowrap}
+nav.top ul a:hover{color:var(--accent-d)}
+@media(max-width:700px){nav.top .brand{display:none}nav.top ul{margin:0}}
+
+header.intro{padding:88px 0 96px;border-bottom:1px solid var(--rule)}
+.intro-grid{display:grid;grid-template-columns:1fr 300px;gap:72px;align-items:end}
+.intro h1{font-size:clamp(52px,7.6vw,104px);font-weight:600;letter-spacing:-.035em;line-height:.95}
+.intro .lead{margin-top:32px;font:400 23px/1.45 var(--serif);color:var(--ink-2);max-width:40ch}
+.cv{list-style:none;margin:32px 0 0;padding:0;max-width:56ch;border-top:1px solid var(--rule)}
+.cv li{font:400 20px/1.4 var(--serif);color:var(--ink-2);padding:10px 0;border-bottom:1px solid var(--rule)}
+.cv li:first-child{color:var(--ink);font-weight:500;border-bottom:0;padding-bottom:0}
+.intro img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:14px}
+.profiles{list-style:none;margin:32px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.profiles a{display:inline-block;font:600 14.5px/1 var(--sans);color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:11px 16px;text-decoration:none}
+.profiles a:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media(max-width:820px){.intro-grid{grid-template-columns:1fr;gap:36px}.intro figure{max-width:240px;order:-1}}
+
+section{padding:96px 0;border-bottom:1px solid var(--rule)}
+section.alt{background:var(--paper-2)}
+
+/* ricerca in evidenza */
+.feature{display:grid;grid-template-columns:1fr 1fr;background:var(--surface);border:1px solid var(--rule);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;margin-top:12px}
+.feature:hover{border-color:var(--ink-3)}
+.feature:hover .spin{animation-play-state:running}
+.feat-art{position:relative;min-height:380px;background:#fbfaf7;overflow:hidden}
+.feat-art .sl{position:absolute;inset:0 50% 0 0;background:url(/img/busta.jpg) left center/cover;z-index:2;box-shadow:14px 0 24px -14px rgba(0,0,0,.35)}
+.feat-disc{position:absolute;width:104%;aspect-ratio:1;top:50%;left:24%;transform:translateY(-50%);z-index:1}
+.feat-disc .spin{transform-origin:200px 200px;animation:spin 14s linear infinite;animation-play-state:paused}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.feat-disc .spin{animation:none}}
+.feat-body{padding:40px 40px 36px;display:flex;flex-direction:column}
+.feat-body h3{font-size:clamp(28px,3vw,38px);font-weight:600}
+.feat-body h3 .yr{color:var(--accent)}
+.feat-body p{color:var(--ink-2)}
+.feat-stats{display:flex;gap:28px;margin:auto 0 0;padding-top:24px;font:500 14px/1.3 var(--sans);color:var(--ink-3)}
+.feat-stats b{display:block;font:600 30px/1 var(--display);font-variation-settings:var(--soft);color:var(--ink);margin-bottom:4px}
+.feat-go{margin-top:24px;font:600 15px var(--sans);color:var(--accent-d)}
+.feature:hover .feat-go{text-decoration:underline}
+@media(max-width:860px){.feature{grid-template-columns:1fr}.feat-art{min-height:300px}}
+.topics{list-style:none;padding:0;margin:40px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.topics li{font:500 14.5px var(--sans);color:var(--ink-2);background:var(--paper-2);border-radius:999px;padding:7px 14px}
+
+/* libri */
+.books{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px;border-top:1.5px solid var(--ink)}
+.books li{display:grid;grid-template-columns:112px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--rule);align-items:start}
+.books .cover img{display:block;width:100%;height:auto;border-radius:3px;box-shadow:0 1px 2px rgba(15,34,68,.12),0 8px 20px -8px rgba(15,34,68,.35);outline:1px solid rgba(15,34,68,.08);transition:transform .15s}
+.books .cover:hover img{transform:translateY(-2px)}
+.books cite{display:block;font:italic 500 24px/1.2 var(--serif)}
+.books cite a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--rule);text-decoration-thickness:1px;text-underline-offset:4px}
+.books cite a:hover{color:var(--accent-d);text-decoration-color:var(--accent)}
+.books .subt{display:block;margin-top:4px;font:italic 400 18px/1.35 var(--serif);color:var(--ink-2)}
+.books small{display:block;margin-top:10px;font:14px/1.5 var(--sans);color:var(--ink-3)}
+@media(max-width:860px){.books{grid-template-columns:1fr}}
+@media(max-width:480px){.books li{grid-template-columns:84px 1fr;gap:16px}}
+
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.cols h3{margin-bottom:12px}
+.cols p{font-size:18.5px;color:var(--ink-2)}
+.cols ul{list-style:none;padding:0;margin:12px 0 0}
+.cols li{font:15.5px/1.4 var(--sans);padding:8px 0;border-bottom:1px solid var(--rule)}
+@media(max-width:900px){.cols{grid-template-columns:1fr;gap:40px}}
+
+footer{padding:48px 0 64px;font:14px/1.7 var(--sans);color:var(--ink-3)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer a{color:var(--ink-2)}
+
+/* lingua */
+nav.top .lang{display:flex;flex:none;background:var(--paper-2);border-radius:999px;padding:3px;margin-left:8px}
+nav.top .lang a,nav.top .lang span{font:600 12.5px/1 var(--sans);letter-spacing:.02em;padding:6px 10px;border-radius:999px;text-decoration:none}
+nav.top .lang span{background:var(--ink);color:#fff}
+nav.top .lang a{color:var(--ink-2)}
+nav.top .lang a:hover{color:var(--accent-d)}
+
+/* libri in home */
+.book-teaser{display:grid;grid-template-columns:150px 1fr;gap:36px;align-items:center;background:var(--surface);border:1px solid var(--rule);border-radius:16px;padding:28px;text-decoration:none;color:inherit;margin-top:12px}
+.book-teaser:hover{border-color:var(--ink-3)}
+.book-teaser img{display:block;width:100%;height:auto;border-radius:3px;box-shadow:0 1px 2px rgba(15,34,68,.12),0 8px 20px -8px rgba(15,34,68,.35)}
+.book-teaser .lbl{font:600 14px var(--sans);color:var(--ink-3)}
+.book-teaser cite{display:block;margin-top:6px;font:italic 500 28px/1.2 var(--serif);color:var(--ink)}
+.book-teaser .subt{display:block;margin-top:4px;font:italic 400 19px/1.35 var(--serif);color:var(--ink-2)}
+.book-teaser small{display:block;margin-top:10px;font:14px/1.5 var(--sans);color:var(--ink-3)}
+.book-teaser .go{display:inline-block;margin-top:18px;font:600 15px var(--sans);color:var(--accent-d)}
+.book-teaser:hover .go{text-decoration:underline}
+@media(max-width:560px){.book-teaser{grid-template-columns:96px 1fr;gap:18px;padding:20px}.book-teaser cite{font-size:22px}}
+
+/* sottopagina */
+header.page{padding:72px 0 48px;border-bottom:1px solid var(--rule)}
+header.page h1{font-size:clamp(44px,6vw,80px);font-weight:600;letter-spacing:-.03em}
+header.page p{margin-top:16px;color:var(--ink-2);font-size:21px}
+.back{font:600 14.5px var(--sans);text-decoration:none;color:var(--ink-3)}
+.back:hover{color:var(--accent-d)}
