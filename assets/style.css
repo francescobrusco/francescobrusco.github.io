@@ -126,3 +126,9 @@ header.page p{margin-top:16px;color:var(--ink-2);font-size:21px}
 .refs .ref-t a:hover{color:var(--link-d);text-decoration-color:var(--link)}
 .refs .ref-link{display:inline-block;margin-left:6px;font:600 12.5px/1 var(--sans);letter-spacing:.02em;color:var(--link);background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:5px 9px;text-decoration:none;vertical-align:2px}
 .refs .ref-link:hover{border-color:var(--link);color:var(--link-d)}
+
+/* video */
+.video{position:relative;aspect-ratio:16/9;margin-top:16px;border-radius:10px;overflow:hidden;background:var(--ink)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.cv li a{color:var(--link);text-decoration:underline;text-decoration-color:rgba(31,111,224,.35);text-underline-offset:4px}
+.cv li a:hover{color:var(--link-d)}
