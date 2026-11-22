@@ -7,12 +7,13 @@ Sito personale di Francesco Brusco: https://francescobrusco.github.io/ (inglese:
 | Percorso | Contenuto |
 |---|---|
 | `/` · `/en/` | Home: presentazione, ricerca, ultimo libro, attività |
-| `/libri/` · `/en/books/` | Tutti i libri con copertina e link a laFeltrinelli |
+| `/pubblicazioni/` · `/en/publications/` | Monografie (con copertine e link a laFeltrinelli), tesi di dottorato, articoli |
+| `/libri/` · `/en/books/` | Rimandi automatici alle pagine delle pubblicazioni |
 | `/produzione_discografica_italiana_1965_1999/` | Progetto di ricerca (repository separato) |
 
 ## Come modificare
 
-Testi, libri e link sono in `strumenti/genera.py`; la grafica in `assets/style.css`. Dopo una modifica rigenera le pagine:
+Testi, libri, articoli e link sono in `strumenti/genera.py`; la grafica in `assets/style.css`. Dopo una modifica rigenera le pagine:
 
 ```
 python strumenti/genera.py

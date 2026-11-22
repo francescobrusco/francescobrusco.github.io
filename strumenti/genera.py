@@ -1,6 +1,7 @@
 # Genera le pagine del sito personale in italiano e in inglese.
 # Uso, dalla cartella del repository:  python strumenti/genera.py
-# Pagine prodotte: index.html, libri/index.html, en/index.html, en/books/index.html
+# Pagine prodotte: index.html, pubblicazioni/index.html, en/index.html, en/publications/index.html
+# (libri/ ed en/books/ rimandano alle nuove pagine)
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -28,15 +29,61 @@ LIBRI = [
          titolo='Estetica di Sgt. Pepper', sottotitolo='Genesi, linguaggi e ricezione del capolavoro dei Beatles',
          editore='Arcana', it='Roma 2017', en='Rome 2017'),
 ]
+
+# ---------- tesi e articoli (dal più recente) ----------
+def cit(e):
+    links = ''.join(f' <a class="ref-link" href="{u}" target="_blank" rel="noopener">{l}</a>' for l, u in e.get('links', [])
+                    if l == 'DOI' or u != e.get('url'))
+    titolo = e['titolo']
+    if e.get('url'):
+        titolo = f'<a href="{e["url"]}" target="_blank" rel="noopener">{titolo}</a>'
+    return f'    <li><i class="ref-t">{titolo}</i>{e.get("sep", ", ")}{e["resto"]}{links}</li>'
+
+TESI = dict(titolo='La produzione discografica in Italia come pratica sociale. Mappatura, etnografia, modelli sistemici di creatività (1965-1999)',
+            url='https://tesidottorato.depositolegale.it/handle/20.500.14242/363606',
+            resto='tesi di dottorato, Dipartimento di Musicologia e Beni Culturali, Università di Pavia, a.a. 2024-2025.')
+
+ARTICOLI = [
+ dict(titolo='Per un’analisi di rete della produzione discografica italiana (1965-1999)', url='https://doi.org/10.13132/1826-9001/24.2441',
+      resto='«Philomusica On-Line» (24/2), University of Pavia Press, 2025, pp. 81-110, ISSN elettronico 1826-9001.',
+      links=[('DOI', 'https://doi.org/10.13132/1826-9001/24.2441'), ('Pavia University Press', 'http://riviste.paviauniversitypress.it/index.php/phi/article/view/2441')]),
+ dict(titolo='‘A tale of three cities’: Mapping Italian recording studios in the analogue era', url='https://doi.org/10.1386/jmpr_00001_1',
+      resto='«Journal of Music Production Research» (1/1), Intellect Limited, 2025, pp. 111-133.', links=[('DOI', 'https://doi.org/10.1386/jmpr_00001_1')]),
+ dict(titolo='L’extra-normal voice di John Lennon. Percezione e mediazione tecnologica di una voce',
+      resto='in Manca, A. e Palma, D. (a cura di), «Corpi voci suoni», Venezia, Edizioni Fondazione Levi, 2025, pp. 99-116, ISBN 978-88-7552-114-1.'),
+ dict(titolo='RCA Italiana', url='https://deumm.org/deu/stable/594523', sep=' ',
+      resto='(voce di enciclopedia), in «DEUMM Online», New York, Répertoire International de Littérature Musicale, 2025.', links=[('DEUMM', 'https://deumm.org/deu/stable/594523')]),
+ dict(titolo='Lost in adaptation: The Beatles re-made in Italy, 1963–1970', url='https://doi.org/10.3828/jbs.2026.3',
+      resto='«The Journal of Beatles Studies» (autumn 2024), Liverpool, Liverpool University Press, pp. 173-199.', links=[('DOI', 'https://doi.org/10.3828/jbs.2026.3')]),
+ dict(titolo='Un ventennio lungo quarant’anni. Traduzioni e tradimenti nella popular music italiana dalla Liberazione al Sessantotto',
+      resto='«Historia Magistra: Rivista di Storia Critica» (XVI/45-46), Torino, Rosenberg &amp; Sellier, 2024, pp. 76-90, ISSN 2036-4040, ISSNE 2036-5071.'),
+ dict(titolo='La capovolta ambiguità di Orione. L’Argentina di Francesco Guccini',
+      resto='«Semicerchio. Rivista di poesia comparata», LXVI-LXVII (2022/1-2), Pisa, Pacini Editore, 2022, pp. 82-92, ISBN 979-12-5486-169-1.'),
+ dict(titolo='Fra la via Emilia e il West. Le due Americhe nell’opera di Francesco Guccini',
+      resto='«Musica/Realtà», XLII, 124, Lim, Lucca 2021, pp. 73-91, ISBN 9788855430883.'),
+ dict(titolo='Revolution 9. John Lennon, Yoko Ono e l’avanguardia ad Abbey Road', url='http://lnx.gatm.it/analiticaojs/index.php/analitica/article/view/157',
+      resto='«Analitica. Rivista online di studi musicali», vol. 13, 2020, ISSN 2279-5065.', links=[('Rivista', 'http://lnx.gatm.it/analiticaojs/index.php/analitica/article/view/157')]),
+ dict(titolo='Authorship e produzione collettiva nella canzone d’autore italiana. Il caso De André', url='http://www.usserorivista.it/?p=1091',
+      resto='«L’Ussero. Rivista di arti, lettere e scienze», n. 8, Pisa 2020, ISSN 2384-8685.', links=[('Rivista', 'http://www.usserorivista.it/?p=1091')]),
+ dict(titolo='Variazioni sul tema del silenzio. La musica nei dipinti di Vermeer',
+      resto='«Riscontri», XLII, n. 1, Terebinto Edizioni, Avellino 2020, pp. 83-110, ISSN 0392-5080.'),
+ dict(titolo='Fabrizio De André in studio. Pratiche, scelte autoriali e modalità cooperative di produzione',
+      resto='«Musica/Realtà», XLI, 121, Lim, Lucca 2020, pp. 117-143, ISBN 9788870969627.'),
+ dict(titolo='The Embarrassment of Abundance. Unity and fragmentation on the Beatles’ White Album', url='http://www.icce.rug.nl/~soundscapes/VOLUME21/White_Album.shtml',
+      resto='«Soundscapes. Journal on media culture», vol. 21, University of Groningen, dicembre 2018, ISSN 1567-7745.', links=[('Rivista', 'http://www.icce.rug.nl/~soundscapes/VOLUME21/White_Album.shtml')]),
+ dict(titolo='Their production will be second to none. The recording studio and its aesthetics on Sgt. Pepper’s Lonely Hearts Club Band', url='http://www.icce.rug.nl/~soundscapes/VOLUME21/Production_will_be_second_to_none.shtml',
+      resto='«Soundscapes. Journal on media culture», vol. 21, University of Groningen, maggio 2018, ISSN 1567-7745.', links=[('Rivista', 'http://www.icce.rug.nl/~soundscapes/VOLUME21/Production_will_be_second_to_none.shtml')]),
+]
+
 def url(b): return f"https://www.lafeltrinelli.it/{b['slug']}/e/{b['isbn13']}"
 
 # ---------- testi ----------
 T = {
  'it': dict(
-   lang='it', home='/', libri='/libri/', other_home='/en/', other_libri='/en/books/',
+   lang='it', home='/', libri='/pubblicazioni/', other_home='/en/', other_libri='/en/publications/',
    switch=('<span aria-current="true" title="Italiano">ITA</span>', '<a href="{o}" hreflang="en" lang="en" title="English">ENG</a>'),
    desc='Francesco Brusco insegna Musiche Popolari Contemporanee e Sound Design all’Università di Salerno. Ricerca, libri, giornalismo musicale e musica.',
-   nav=[('#ricerca', 'Ricerca'), ('{libri}', 'Libri'), ('#attivita', 'Attività'), (RICERCA, 'La produzione discografica in Italia')],
+   nav=[('#ricerca', 'Ricerca'), ('{libri}', 'Pubblicazioni'), ('#attivita', 'Attività'), (RICERCA, 'La produzione discografica in Italia')],
    cv=['Docente di Musiche Popolari Contemporanee e Sound Design',
        'Università di Salerno, Dipartimento di Scienze del Patrimonio Culturale (Dispac)',
        'PhD in Scienze del Testo Letterario e Musicale, Università di Pavia',
@@ -50,19 +97,20 @@ T = {
    topics_label='Temi di ricerca',
    topics=['Popular music italiana', 'Record production e studi di registrazione', 'Canzone d’autore', 'Beatles',
            'Social network analysis', 'Mappatura culturale e GIS', 'Digital humanities', 'Intelligenza artificiale e musica'],
-   h_libri='Libri', ultimo='Ultimo libro', tutti='Tutti i libri ({n})', luogo='it',
+   h_libri='Pubblicazioni', ultimo='Ultimo libro', tutti='Tutte le pubblicazioni', luogo='it',
+   h_mono='Monografie', h_tesi='Tesi di dottorato', h_art='Articoli e saggi', note_lang='',
    h_att='Attività',
    att=[('Didattica', '<p>Insegna Musiche Popolari Contemporanee e Sound Design all’Università di Salerno e tiene laboratori e workshop su digital humanities, network analysis e mappatura delle scene musicali.</p>'),
         ('Giornalismo', '<p>Scrive di musica per <i>Il Manifesto</i> e <i>il Giornale della Musica</i>.</p><ul><li><a href="https://ilmanifesto.it/autori/francesco-brusco" target="_blank" rel="noopener">Articoli su il manifesto</a></li></ul>'),
         ('Musica', '<p>Come musicista ha all’attivo due album con i Là Nua.</p>')],
-   libri_title='Libri', libri_lede='Monografie dedicate principalmente ai Beatles, alla canzone d’autore italiana e agli studi di registrazione. Ogni titolo porta alla scheda su laFeltrinelli.',
+   libri_title='Pubblicazioni', libri_lede='Monografie, tesi di dottorato e articoli. I titoli dei libri portano alla scheda su laFeltrinelli, quelli degli articoli alla versione online.',
    back='← Torna alla home', felt='Scheda su laFeltrinelli', alt_cover='Copertina di',
  ),
  'en': dict(
-   lang='en', home='/en/', libri='/en/books/', other_home='/', other_libri='/libri/',
+   lang='en', home='/en/', libri='/en/publications/', other_home='/', other_libri='/pubblicazioni/',
    switch=('<a href="{o}" hreflang="it" lang="it" title="Italiano">ITA</a>', '<span aria-current="true" title="English">ENG</span>'),
    desc='Francesco Brusco teaches Contemporary Popular Music and Sound Design at the University of Salerno. Research, books, music journalism and music.',
-   nav=[('#ricerca', 'Research'), ('{libri}', 'Books'), ('#attivita', 'Activities'), (RICERCA + 'en/', 'Record production in Italy')],
+   nav=[('#ricerca', 'Research'), ('{libri}', 'Publications'), ('#attivita', 'Activities'), (RICERCA + 'en/', 'Record production in Italy')],
    cv=['Lecturer in Contemporary Popular Music and Sound Design',
        'University of Salerno, Department of Cultural Heritage Sciences (Dispac)',
        'PhD in Literary and Musical Text Studies, University of Pavia',
@@ -76,12 +124,13 @@ T = {
    topics_label='Research topics',
    topics=['Italian popular music', 'Record production and recording studios', 'Italian singer-songwriters', 'The Beatles',
            'Social network analysis', 'Cultural mapping and GIS', 'Digital humanities', 'Artificial intelligence and music'],
-   h_libri='Books', ultimo='Latest book', tutti='All books ({n})', luogo='en',
+   h_libri='Publications', ultimo='Latest book', tutti='All publications', luogo='en',
+   h_mono='Monographs', h_tesi='PhD thesis', h_art='Articles and essays', note_lang='<p class="note" style="margin-top:-8px">References are given in their original language.</p>',
    h_att='Activities',
    att=[('Teaching', '<p>He teaches Contemporary Popular Music and Sound Design at the University of Salerno and leads workshops on digital humanities, network analysis and the mapping of music scenes.</p>'),
         ('Journalism', '<p>He writes about music for <i>Il Manifesto</i> and <i>il Giornale della Musica</i>.</p><ul><li><a href="https://ilmanifesto.it/autori/francesco-brusco" target="_blank" rel="noopener">Articles in il manifesto</a></li></ul>'),
         ('Music', '<p>As a musician he has released two albums with Là Nua.</p>')],
-   libri_title='Books', libri_lede='Monographs devoted mainly to the Beatles, Italian singer-songwriters and recording studios, all published in Italian. Each title links to its page on laFeltrinelli.',
+   libri_title='Publications', libri_lede='Monographs, PhD thesis and articles. Book titles link to their page on laFeltrinelli, article titles to the online version.',
    back='← Back to home', felt='laFeltrinelli page', alt_cover='Cover of',
  ),
 }
@@ -186,7 +235,7 @@ def home(t):
       <span class="lbl">{t['ultimo']}</span>
       <cite>{b['titolo']}</cite><span class="subt">{b['sottotitolo']}</span>
       <small>{b['editore']}, {b[t['luogo']]}</small>
-      <span class="go">{t['tutti'].format(n=len(LIBRI))}</span>
+      <span class="go">{t['tutti']}</span>
     </div>
   </a>
 </div></section>
@@ -208,22 +257,38 @@ def libri(t):
       <div><cite><a title="{t['felt']}" href="{u}" target="_blank" rel="noopener">{b['titolo']}</a></cite><span class="subt">{b['sottotitolo']}</span><small>{b['editore']}, {b[t['luogo']]} · ISBN {b['isbn']}</small></div></li>
 '''
     title = f"{t['libri_title']} · Francesco Brusco"
-    return head(t, title, '/libri/', '/en/books/') + nav(t, t['other_libri'], False) + f'''
+    tesi = cit(TESI)
+    art = '\n'.join(cit(a) for a in ARTICOLI)
+    return head(t, title, '/pubblicazioni/', '/en/publications/') + nav(t, t['other_libri'], False) + f'''
 <header class="page"><div class="wrap">
   <a class="back" href="{t['home']}">{t['back']}</a>
   <h1 style="margin-top:20px">{t['libri_title']}</h1>
   <p>{t['libri_lede']}</p>
 </div></header>
 
-<section class="alt" style="padding-top:56px"><div class="wrap">
+<section class="alt pubs"><div class="wrap">
+  <h2>{t['h_mono']}</h2>
   <ul class="books">
 {li}  </ul>
+
+  <h2 class="pub-h">{t['h_tesi']}</h2>
+  <ol class="refs">
+{tesi}
+  </ol>
+
+  <h2 class="pub-h">{t['h_art']}</h2>
+  {t['note_lang']}
+  <ol class="refs">
+{art}
+  </ol>
 </div></section>
 
 ''' + FOOT + '</body>\n</html>\n'
 
-out = {'index.html': home(T['it']), 'libri/index.html': libri(T['it']),
-       'en/index.html': home(T['en']), 'en/books/index.html': libri(T['en'])}
+REDIRECT = '<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><title>Pubblicazioni</title><link rel="canonical" href="https://francescobrusco.github.io{u}"><meta http-equiv="refresh" content="0; url={u}"></head><body><a href="{u}">{u}</a></body></html>\n'
+out = {'index.html': home(T['it']), 'pubblicazioni/index.html': libri(T['it']),
+       'en/index.html': home(T['en']), 'en/publications/index.html': libri(T['en']),
+       'libri/index.html': REDIRECT.format(u='/pubblicazioni/'), 'en/books/index.html': REDIRECT.format(u='/en/publications/')}
 for path, html in out.items():
     f = ROOT / path
     f.parent.mkdir(parents=True, exist_ok=True)

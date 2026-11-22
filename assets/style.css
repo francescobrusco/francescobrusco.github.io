@@ -114,3 +114,14 @@ header.page h1{font-size:clamp(44px,6vw,80px);font-weight:600;letter-spacing:-.0
 header.page p{margin-top:16px;color:var(--ink-2);font-size:21px}
 .back{font:600 14.5px var(--sans);text-decoration:none;color:var(--ink-3)}
 .back:hover{color:var(--accent-d)}
+
+/* pubblicazioni */
+.pubs h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:.6em}
+.pubs .pub-h{margin-top:80px}
+.refs{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink);max-width:880px}
+.refs li{padding:18px 0;border-bottom:1px solid var(--rule);font:18.5px/1.5 var(--serif);color:var(--ink-2)}
+.refs .ref-t{color:var(--ink);font-style:italic}
+.refs .ref-t a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:4px}
+.refs .ref-t a:hover{color:var(--accent-d);text-decoration-color:var(--accent)}
+.refs .ref-link{display:inline-block;margin-left:6px;font:600 12.5px/1 var(--sans);letter-spacing:.02em;color:var(--accent-d);background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:5px 9px;text-decoration:none;vertical-align:2px}
+.refs .ref-link:hover{border-color:var(--accent);color:var(--ink)}
