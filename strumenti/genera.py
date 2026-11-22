@@ -2,10 +2,11 @@
 # Uso, dalla cartella del repository:  python strumenti/genera.py
 # Pagine prodotte: index.html, pubblicazioni/index.html, en/index.html, en/publications/index.html
 # (libri/ ed en/books/ rimandano alle nuove pagine)
-import pathlib
+import pathlib, hashlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DISCO = (ROOT / 'strumenti' / 'disco.svg').read_text(encoding='utf-8')
+CSSV = hashlib.md5((ROOT / 'assets' / 'style.css').read_bytes()).hexdigest()[:8]  # aggiorna la cache del browser
 RICERCA = 'https://francescobrusco.github.io/produzione_discografica_italiana_1965_1999/'
 
 # ---------- libri (dal più recente) ----------
@@ -156,7 +157,7 @@ def head(t, title, alt_it, alt_en):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {FONTS}
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/style.css?v={CSSV}">
 </head>
 <body>
 '''
