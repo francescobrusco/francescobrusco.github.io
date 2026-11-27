@@ -83,7 +83,7 @@ T = {
  'it': dict(
    lang='it', home='/', libri='/pubblicazioni/', other_home='/en/', other_libri='/en/publications/',
    switch=('<span aria-current="true" title="Italiano">ITA</span>', '<a href="{o}" hreflang="en" lang="en" title="English">ENG</a>'),
-   desc='Francesco Brusco insegna Musiche Popolari Contemporanee e Sound Design all’Università di Salerno. Ricerca, pubblicazioni, giornalismo musicale e musica.',
+   desc='Francesco Brusco insegna Musiche Popolari Contemporanee e Sound Design all’Università di Salerno. Ricerca, pubblicazioni e giornalismo musicale.',
    nav=[('#ricerca', 'Ricerca'), ('{libri}', 'Pubblicazioni'), ('#attivita', 'Attività'), (RICERCA, 'La produzione discografica in Italia')],
    cv=['Docente di Musiche Popolari Contemporanee e Sound Design',
        'Università di Salerno, Dipartimento di Scienze del Patrimonio Culturale (Dispac)',
@@ -111,7 +111,7 @@ T = {
  'en': dict(
    lang='en', home='/en/', libri='/en/publications/', other_home='/', other_libri='/pubblicazioni/',
    switch=('<a href="{o}" hreflang="it" lang="it" title="Italiano">ITA</a>', '<span aria-current="true" title="English">ENG</span>'),
-   desc='Francesco Brusco teaches Contemporary Popular Music and Sound Design at the University of Salerno. Research, publications, music journalism and music.',
+   desc='Francesco Brusco teaches Contemporary Popular Music and Sound Design at the University of Salerno. Research, publications and music journalism.',
    nav=[('#ricerca', 'Research'), ('{libri}', 'Publications'), ('#attivita', 'Activities'), (RICERCA + 'en/', 'Record production in Italy')],
    cv=['Lecturer in Contemporary Popular Music and Sound Design',
        'University of Salerno, Department of Cultural Heritage Sciences (Dispac)',
@@ -164,9 +164,15 @@ def head(t, title, alt_it, alt_en):
 <body>
 '''
 
+# Sezione «Attività» (Didattica, Giornalismo, Stand-Up Musicology, Musica):
+# nascosta per ora; per rimetterla basta True.
+MOSTRA_ATTIVITA = False
+
 def nav(t, other, home_page):
     items = ''
     for href, label in t['nav']:
+        if href == '#attivita' and not MOSTRA_ATTIVITA:
+            continue
         href = href.replace('{libri}', t['libri'])
         if href.startswith('#') and not home_page:
             href = t['home'] + href
@@ -243,14 +249,14 @@ def home(t):
   </a>
 </div></section>
 
-<section id="attivita"><div class="wrap">
+''' + (f'''<section id="attivita"><div class="wrap">
   <h2>{t['h_att']}</h2>
   <div class="cols">
 {att}
   </div>
 </div></section>
 
-''' + FOOT + GROOVES + '</body>\n</html>\n'
+''' if MOSTRA_ATTIVITA else '') + FOOT + GROOVES + '</body>\n</html>\n'
 
 def libri(t):
     li = ''
